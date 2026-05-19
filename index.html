@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>მთარგმნელობითი მომსახურება - Natura Translator</title>
+<meta name="description" content="მთარგმნელობითი მომსახურება - დღევანდელ გლობალიზებულ სამყაროში, სადაც საზღვრები ბუნდოვანია, ეფექტური კომუნიკაცია გადამწყვეტია ურთიერთობებში.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&family=Noto+Serif+Georgian:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: #1e88e5;
+    --primary-dark: #1565c0;
+    --accent: #ff7043;
+    --dark: #1a2332;
+    --light: #f5f7fa;
+    --text: #2c3e50;
+    --muted: #6b7c93;
+    --border: #e3e8ef;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans Georgian', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: #fff;
+  }
+  h1, h2, h3, h4 { font-family: 'Noto Serif Georgian', serif; line-height: 1.3; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* HEADER */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+  }
+  .logo {
+    font-family: 'Noto Serif Georgian', serif;
+    font-size: 24px; font-weight: 700;
+    color: var(--primary-dark);
+  }
+  .logo span { color: var(--accent); }
+  .menu { display: flex; gap: 32px; align-items: center; }
+  .menu a {
+    font-size: 15px; font-weight: 500; color: var(--text);
+    transition: color .2s;
+  }
+  .menu a:hover { color: var(--primary); }
+  .menu .dropdown { position: relative; cursor: pointer; }
+  .menu .dropdown:hover .submenu { display: block; }
+  .submenu {
+    display: none; position: absolute; top: 100%; left: -16px;
+    background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border-radius: 8px; min-width: 230px; padding: 8px 0;
+  }
+  .submenu a { display: block; padding: 10px 20px; font-size: 14px; }
+  .submenu a:hover { background: var(--light); color: var(--primary); }
+  .phone-btn {
+    background: var(--primary);
+    color: #fff !important; padding: 10px 20px;
+    border-radius: 50px; font-weight: 600;
+    transition: background .2s;
+  }
+  .phone-btn:hover { background: var(--primary-dark); }
+  .mobile-toggle { display: none; font-size: 24px; cursor: pointer; background: none; border: none; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #f0f7ff 0%, #fff5f0 100%);
+    padding: 80px 0 100px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -50px; right: -50px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(30,136,229,0.08), transparent);
+    border-radius: 50%;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center;
+  }
+  .hero h1 {
+    font-size: 44px; color: var(--dark); margin-bottom: 24px;
+    font-weight: 700;
+  }
+  .hero p { font-size: 17px; color: var(--muted); margin-bottom: 32px; }
+  .hero p strong { color: var(--text); }
+  .btn {
+    display: inline-block; background: var(--primary); color: #fff;
+    padding: 14px 32px; border-radius: 50px; font-weight: 600;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30,136,229,0.3); }
+  .btn.accent { background: var(--accent); }
+  .btn.accent:hover { box-shadow: 0 8px 20px rgba(255,112,67,0.3); }
+  .hero-images {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    position: relative;
+  }
+  .hero-images .main {
+    grid-column: 1 / -1;
+    height: 280px; border-radius: 16px;
+    background: linear-gradient(135deg, #1e88e5, #1565c0);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 48px;
+    box-shadow: 0 20px 40px rgba(30,136,229,0.2);
+  }
+  .hero-images .sub {
+    height: 130px; border-radius: 12px;
+    background: linear-gradient(135deg, #ff7043, #f4511e);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 32px;
+  }
+  .hero-images .sub:nth-child(3) {
+    background: linear-gradient(135deg, #26a69a, #00897b);
+  }
+
+  /* SERVICES SECTION */
+  section { padding: 80px 0; }
+  .section-title {
+    font-size: 36px; text-align: center; margin-bottom: 16px;
+    color: var(--dark);
+  }
+  .section-subtitle {
+    text-align: center; color: var(--muted); max-width: 700px;
+    margin: 0 auto 50px; font-size: 16px;
+  }
+  .features {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    margin-top: 50px;
+  }
+  .feature {
+    background: #fff; padding: 32px 24px; border-radius: 16px;
+    text-align: center; border: 1px solid var(--border);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .feature:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+    border-color: var(--primary);
+  }
+  .feature-icon {
+    width: 64px; height: 64px; margin: 0 auto 16px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 28px;
+  }
+  .feature:nth-child(2) .feature-icon { background: linear-gradient(135deg, #26a69a, #00897b); }
+  .feature:nth-child(3) .feature-icon { background: linear-gradient(135deg, var(--accent), #f4511e); }
+  .feature:nth-child(4) .feature-icon { background: linear-gradient(135deg, #8e44ad, #6c3483); }
+  .feature h3 { font-size: 20px; margin-bottom: 10px; color: var(--dark); }
+  .feature p { font-size: 14px; color: var(--muted); }
+
+  /* DETAILS SECTION */
+  .details { background: var(--light); }
+  .details-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .details-images {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .details-images > div {
+    height: 180px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 36px;
+  }
+  .details-images > div:nth-child(1) { background: linear-gradient(135deg, #1e88e5, #1565c0); }
+  .details-images > div:nth-child(2) { background: linear-gradient(135deg, #ff7043, #f4511e); grid-row: span 2; height: auto; }
+  .details-images > div:nth-child(3) { background: linear-gradient(135deg, #26a69a, #00897b); }
+  .details-content h2 {
+    font-size: 32px; margin-bottom: 24px; color: var(--dark);
+  }
+  .details-content p { margin-bottom: 14px; font-size: 15px; }
+  .details-content p strong { color: var(--primary-dark); }
+
+  /* WHY US */
+  .why-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    margin-top: 40px;
+  }
+  .why-item {
+    padding: 28px; background: #fff; border-left: 4px solid var(--primary);
+    border-radius: 0 12px 12px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    transition: transform .3s;
+  }
+  .why-item:hover { transform: translateX(6px); }
+  .why-item:nth-child(2) { border-color: var(--accent); }
+  .why-item:nth-child(3) { border-color: #26a69a; }
+  .why-item:nth-child(4) { border-color: #8e44ad; }
+  .why-item h4 { font-size: 18px; margin-bottom: 8px; color: var(--dark); }
+  .why-item p { font-size: 14px; color: var(--muted); }
+
+  /* PRICING */
+  .pricing { background: var(--light); }
+  .price-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+    margin-top: 50px;
+  }
+  .price-card {
+    background: #fff; padding: 40px 32px; border-radius: 20px;
+    text-align: center; transition: transform .3s, box-shadow .3s;
+    border: 2px solid transparent;
+  }
+  .price-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: var(--primary);
+  }
+  .price-card.featured { border-color: var(--accent); transform: scale(1.03); }
+  .price-card h3 { font-size: 22px; color: var(--dark); margin-bottom: 6px; }
+  .price-format { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .price-amount {
+    font-size: 48px; font-weight: 700; color: var(--primary);
+    font-family: 'Noto Serif Georgian', serif;
+  }
+  .price-card.featured .price-amount { color: var(--accent); }
+  .price-unit { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+  .price-list { list-style: none; text-align: left; }
+  .price-list li {
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 14px; padding-left: 24px; position: relative;
+  }
+  .price-list li::before {
+    content: '✓'; position: absolute; left: 0; color: var(--primary);
+    font-weight: 700;
+  }
+  .price-card.featured .price-list li::before { color: var(--accent); }
+  .price-list li:last-child { border: none; }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, var(--dark), #2c3e50);
+    color: #fff; text-align: center;
+  }
+  .cta h2 { font-size: 36px; margin-bottom: 20px; }
+  .cta p { font-size: 17px; opacity: .85; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+  /* FOOTER */
+  footer {
+    background: #0f1923; color: #cfd8dc; padding: 60px 0 24px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-col h4 {
+    color: #fff; font-size: 16px; margin-bottom: 20px;
+    font-family: 'Noto Sans Georgian', sans-serif; font-weight: 600;
+  }
+  .footer-col .logo { color: #fff; margin-bottom: 14px; }
+  .footer-col p { font-size: 14px; opacity: .75; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul a { font-size: 14px; opacity: .75; transition: opacity .2s; }
+  .footer-col ul a:hover { opacity: 1; color: var(--accent); }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 14px; font-size: 14px; opacity: .8;
+  }
+  .contact-item .ico {
+    width: 32px; height: 32px; background: rgba(30,136,229,0.2);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; color: var(--primary);
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px; text-align: center; font-size: 13px; opacity: .6;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 968px) {
+    .hero-grid, .details-grid, .footer-grid { grid-template-columns: 1fr; }
+    .features { grid-template-columns: repeat(2, 1fr); }
+    .price-grid { grid-template-columns: 1fr; }
+    .price-card.featured { transform: none; }
+    .why-grid { grid-template-columns: 1fr; }
+    .menu { display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: #fff; flex-direction: column; padding: 20px; gap: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .menu.open { display: flex; }
+    .mobile-toggle { display: block; }
+    .hero h1 { font-size: 32px; }
+    .section-title { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav class="nav">
+      <a href="#" class="logo">Natura <span>Translator</span></a>
+      <div class="menu" id="menu">
+        <a href="#home">მთავარი</a>
+        <a href="#about">ჩვენ შესახებ</a>
+        <div class="dropdown">
+          <a href="#services">მომსახურება ▾</a>
+          <div class="submenu">
+            <a href="#services">დოკუმენტის თარგმნა ონლაინ</a>
+            <a href="#services">ფორმა 100-ის თარგმნა</a>
+          </div>
+        </div>
+        <a href="#pricing">ფასები</a>
+        <a href="#contact">კონტაქტი</a>
+        <a href="tel:+995555300087" class="phone-btn">555 300 087</a>
+      </div>
+      <button class="mobile-toggle" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <h1>მთარგმნელობითი მომსახურება</h1>
+        <p><strong>დღევანდელ გლობალიზებულ სამყაროში</strong>, სადაც საზღვრები ბუნდოვანია, ეფექტური კომუნიკაცია გადამწყვეტია როგორც პირად, ისე ბიზნეს ურთიერთობებში. ჩვენი პროფესიონალური თარჯიმანთა ბიურო გთავაზობთ მომსახურებების ფართო სპექტრს, რათა დაგეხმაროთ ნებისმიერი ენობრივი ბარიერის დაძლევაში.</p>
+        <a href="#services" class="btn">მომსახურება</a>
+      </div>
+      <div class="hero-images">
+        <div class="main">🌐</div>
+        <div class="sub">📄</div>
+        <div class="sub">✍️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">მომსახურება</h2>
+    <p class="section-subtitle">ჩვენ ვთავაზობთ წერილობით და ზეპირ თარგმნას და დოკუმენტების ლეგალიზაციას. მრავალწლიანი გამოცდილება და კლიენტების ნდობა გვაძლევს საშუალებას ვიმუშაოთ წარმატებით როგორც ადგილობრივ, ასევე საერთაშორისო ბაზარზე.</p>
+    <div style="text-align:center;"><a href="#pricing" class="btn">ფასები</a></div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🎯</div>
+        <h3>სიზუსტე</h3>
+        <p>თქვენი თარგმანი იქნება ზუსტი და შინაარსობრივად სრულყოფილი.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛡️</div>
+        <h3>დაცვა</h3>
+        <p>დაცული იქნება ყველა იურიდიული, სამედიცინო ან ტექნიკური ნიუანსი.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✓</div>
+        <h3>შემოწმება</h3>
+        <p>თქვენი დოკუმენტები წარმატებით გაივლის ნებისმიერ შემოწმებას.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⏱️</div>
+        <h3>დრო</h3>
+        <p>თქვენ დაზოგავთ დროსა და რესურსებს, რადგან არ მოგიწევთ შეცდომების გასწორება.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="details" id="about">
+  <div class="container">
+    <div class="details-grid">
+      <div class="details-images">
+        <div>📚</div>
+        <div>⚖️</div>
+        <div>🏥</div>
+      </div>
+      <div class="details-content">
+        <h2>რა მთარგმნელობით მომსახურებას გთავაზობთ ჩვენი თარჯიმანთა ბიურო?</h2>
+        <p><strong>წერილობითი თარგმანი:</strong> ოფიციალური დოკუმენტები — პასპორტი, პირადობის მოწმობა, დაბადების/ქორწინების/გარდაცვალების მოწმობა, მართვის მოწმობა, ატესტატი, დიპლომი და სხვა პირადი დოკუმენტები.</p>
+        <p><strong>იურიდიული თარგმანი:</strong> ხელშეკრულება, ნოტარიული მინდობილობა, სასამართლო გადაწყვეტილება, კომპანიის წესდება და სხვა იურიდიული ტექსტები, სადაც სიზუსტე კრიტიკულია.</p>
+        <p><strong>სამედიცინო თარგმანი:</strong> სამედიცინო ისტორია, ეპიკრიზი, ლაბორატორიული კვლევის პასუხები, ექიმის დანიშნულება.</p>
+        <p><strong>ტექნიკური თარგმანი:</strong> ინსტრუქციები, ტექნიკური აღწერილობები, სახელმძღვანელოები.</p>
+        <p><strong>ფინანსური თარგმანი:</strong> საბანკო ამონაწერები, აუდიტორული დასკვნები, ფინანსური ანგარიშგებები.</p>
+        <p><strong>ნოტარიული დამოწმება და ლეგალიზაცია:</strong> თარგმანის შესრულების შემდეგ, ჩვენ გთავაზობთ დოკუმენტის ნოტარიულ დამოწმებას, რაც მას ოფიციალურ იურიდიულ ძალას ანიჭებს.</p>
+        <p><strong>რედაქტირება და კორექტირება:</strong> თუ თქვენ უკვე გაქვთ ნათარგმნი ტექსტი, ჩვენი რედაქტორები შეამოწმებენ მას გრამატიკულ, სტილისტურ და ტერმინოლოგიურ სიზუსტეზე.</p>
+        <a href="#contact" class="btn" style="margin-top:20px;">ჩვენ შესახებ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">რატომ ჩვენი მთარგმნელობითი მომსახურება?</h2>
+    <p class="section-subtitle">თუ გჭირდებათ დოკუმენტების ზუსტი, სანდო და პროფესიონალური თარგმნა, დაგვიკავშირდით. ჩვენ მზად ვართ, გავხდეთ თქვენი სანდო პარტნიორი.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <h4>კვალიფიციური თარჯიმნები</h4>
+        <p>ჩვენი გუნდი შედგება გამოცდილი სპეციალისტებისგან, რომლებსაც ღრმა ცოდნა აქვთ სხვადასხვა დარგში.</p>
+      </div>
+      <div class="why-item">
+        <h4>ვადების დაცვა</h4>
+        <p>ჩვენ ვმუშაობთ ოპერატიულად და დროულად ვასრულებთ შეკვეთებს, ხარისხის დათმობის გარეშე.</p>
+      </div>
+      <div class="why-item">
+        <h4>მონაცემების დაცვა</h4>
+        <p>თქვენი დოკუმენტებისა და პირადი მონაცემების უსაფრთხოება ჩვენი პრიორიტეტია.</p>
+      </div>
+      <div class="why-item">
+        <h4>ხარისხის კონტროლი</h4>
+        <p>ყოველი თარგმანი გადის მკაცრ შემოწმებას, რაც შეცდომის დაშვების ალბათობას მინიმუმამდე ამცირებს.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <h2 class="section-title">მთარგმნელობითი მომსახურება — ფასები</h2>
+    <p class="section-subtitle">გამჭვირვალე ფასები ყველა ტიპის თარგმანისთვის</p>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>სამედიცინო</h3>
+        <div class="price-format">A4 ფორმატი</div>
+        <div class="price-amount">12 ₾</div>
+        <div class="price-unit">/ 1 გვერდი</div>
+        <ul class="price-list">
+          <li>დიაგნოზი</li>
+          <li>კატე</li>
+          <li>რადიოლოგიური დასკვნები</li>
+          <li>სამედიცინო ისტორია</li>
+          <li>ლაბორატორიული კვლევა</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <h3>იურიდიული</h3>
+        <div class="price-format">A4 ფორმატი</div>
+        <div class="price-amount">15 ₾</div>
+        <div class="price-unit">/ 1 გვერდი</div>
+        <ul class="price-list">
+          <li>ხელშეკრულება</li>
+          <li>კანონები</li>
+          <li>კონტრაქტები</li>
+          <li>წესდებები</li>
+          <li>ნებართვები</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>ტექნიკური</h3>
+        <div class="price-format">A4 ფორმატი</div>
+        <div class="price-amount">20 ₾</div>
+        <div class="price-unit">/ 1 გვერდი</div>
+        <ul class="price-list">
+          <li>სამრეწველო დოკუმენტები</li>
+          <li>ინჟინრული ნაშრომები</li>
+          <li>დაზგა-დანადგარების მუშაობის დედანი</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>პროფესიონალური მთარგმნელობითი მომსახურება</h2>
+    <p>ჩვენი თარჯიმნების მაღალი კვალიფიკაცია პირდაპირ აისახება თქვენს მიერ მიღებული მომსახურების ხარისხზე. თქვენ შეგიძლიათ იყოთ სრულიად დარწმუნებული ამაში.</p>
+    <a href="tel:+995555300087" class="btn accent">კონტაქტი</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo">Natura <span style="color:var(--accent);">Translator</span></div>
+        <p><strong style="color:#fff;">მოხერხებულობა, სისწრაფე და ხარისხი.</strong></p>
+        <p style="margin-top:14px;">პროფესიონალური თარჯიმანთა ბიურო, რომელიც გთავაზობთ მაღალი ხარისხის მთარგმნელობით მომსახურებას.</p>
+      </div>
+      <div class="footer-col">
+        <h4>სწრაფი ბმულები</h4>
+        <ul>
+          <li><a href="#home">მთავარი</a></li>
+          <li><a href="#about">ჩვენ შესახებ</a></li>
+          <li><a href="#pricing">თარგმნის ფასები</a></li>
+          <li><a href="#contact">კონტაქტი</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>მომსახურება</h4>
+        <ul>
+          <li><a href="#services">დოკუმენტის თარგმნა ონლაინ</a></li>
+          <li><a href="#services">ფორმა 100-ის თარგმნა</a></li>
+          <li><a href="#services">ნოტარიული დამოწმება</a></li>
+          <li><a href="#services">ლეგალიზაცია</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>კონტაქტი</h4>
+        <div class="contact-item">
+          <span class="ico">📞</span>
+          <a href="tel:+995555300087">+995 555 300 087</a>
+        </div>
+        <div class="contact-item">
+          <span class="ico">✉️</span>
+          <a href="mailto:argvlianinatura@gmail.com">argvlianinatura@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Natura Translator. ყველა უფლება დაცულია.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
