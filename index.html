@@ -6,12 +6,186 @@
     <title>natura | Professional Copywriter & Translator (EN/IT)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
         .gradient-text {
             background: linear-gradient(90deg, #1f2937, #4b5563);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        :root {
+            --nl-bg:      #0d0d0d;
+            --nl-surface: #111111;
+            --nl-border:  #1e1e1e;
+            --nl-bar:     #161616;
+            --nl-green:   #4ade80;
+            --nl-muted:   #3d3d3d;
+            --nl-label:   #666;
+            --nl-text:    #aaa;
+            --nl-bright:  #efefef;
+            --nl-mono:    'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+        }
+        .nl-section {
+            background: var(--nl-bg);
+            padding: clamp(52px, 9vw, 96px) clamp(16px, 5vw, 40px);
+            font-family: var(--nl-mono);
+        }
+        .nl-inner { max-width: 800px; margin: 0 auto; }
+        .nl-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--nl-border);
+        }
+        .nl-dot {
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            background: var(--nl-green);
+            box-shadow: 0 0 10px var(--nl-green);
+            flex-shrink: 0;
+            margin-top: 4px;
+            animation: nl-pulse 2.6s ease-in-out infinite;
+        }
+        @keyframes nl-pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--nl-green); }
+            50%       { opacity: 0.2; box-shadow: none; }
+        }
+        .nl-heading-title {
+            font-size: clamp(10px, 2vw, 12px);
+            font-weight: 500;
+            color: var(--nl-label);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin: 0 0 4px;
+            line-height: 1.4;
+        }
+        .nl-heading-title em { color: var(--nl-green); font-style: normal; }
+        .nl-heading-sub {
+            font-size: clamp(9px, 1.7vw, 10px);
+            color: var(--nl-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .nl-card {
+            border: 1px solid var(--nl-border);
+            border-radius: 3px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            background: var(--nl-surface);
+        }
+        .nl-card-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px 14px;
+            padding: 8px 14px;
+            background: var(--nl-bar);
+            border-bottom: 1px solid var(--nl-border);
+            font-size: clamp(9px, 1.7vw, 10px);
+            color: var(--nl-muted);
+            letter-spacing: 0.05em;
+        }
+        .nl-bar-id   { color: var(--nl-muted); word-break: break-all; }
+        .nl-bar-prod { color: var(--nl-label); }
+        .nl-bar-ok   {
+            margin-left: auto;
+            color: var(--nl-green);
+            font-size: clamp(8px, 1.5vw, 9px);
+            letter-spacing: 0.14em;
+            white-space: nowrap;
+        }
+        .nl-card-body { padding: 16px 14px 12px; }
+        .nl-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 16px;
+            margin-bottom: 16px;
+            font-size: clamp(9px, 1.7vw, 10px);
+        }
+        .nl-meta-pair { display: flex; gap: 6px; align-items: baseline; min-width: 0; }
+        .nl-meta-k    { color: var(--nl-muted); flex-shrink: 0; }
+        .nl-meta-v    { color: var(--nl-text); word-break: break-all; }
+        .nl-thread { display: flex; flex-direction: column; }
+        .nl-msg {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 0 10px;
+            padding: 8px 0;
+            border-top: 1px solid var(--nl-border);
+            font-size: clamp(10px, 2vw, 11.5px);
+            line-height: 1.7;
+            min-width: 0;
+        }
+        .nl-msg:first-child { border-top: none; }
+        .nl-time {
+            color: var(--nl-muted);
+            font-size: clamp(8px, 1.5vw, 9px);
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            padding-top: 3px;
+            flex-shrink: 0;
+        }
+        .nl-body { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+        .nl-sender {
+            font-size: clamp(8px, 1.5vw, 9px);
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
+            overflow-wrap: break-word;
+            word-break: break-all;
+        }
+        .nl-sender-c { color: var(--nl-label); }
+        .nl-sender-n { color: var(--nl-green); }
+        .nl-text { color: var(--nl-text); }
+        .nl-msg.nl-hi .nl-text { color: var(--nl-bright); font-weight: 500; }
+        .nl-sys {
+            grid-column: 2;
+            font-size: clamp(8px, 1.5vw, 9px);
+            color: var(--nl-muted);
+            font-style: italic;
+            padding: 2px 0 1px;
+            letter-spacing: 0.04em;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+        .nl-footer {
+            margin-top: 34px;
+            padding-top: 20px;
+            border-top: 1px solid var(--nl-border);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: clamp(9px, 1.6vw, 10px);
+        }
+        .nl-brand { color: var(--nl-muted); letter-spacing: 0.1em; }
+        .nl-brand em { color: var(--nl-green); font-style: normal; }
+        .nl-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+        .nl-stat-n {
+            display: block;
+            color: var(--nl-bright);
+            font-weight: 600;
+            font-size: clamp(13px, 2.8vw, 17px);
+            line-height: 1.1;
+        }
+        .nl-stat-l {
+            display: block;
+            color: var(--nl-muted);
+            font-size: clamp(8px, 1.4vw, 9px);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        @media (max-width: 400px) {
+            .nl-msg { grid-template-columns: 1fr; }
+            .nl-time { padding-top: 0; margin-bottom: -2px; }
+            .nl-sys  { grid-column: 1; }
         }
     </style>
 </head>
@@ -74,7 +248,6 @@
                 <p class="text-gray-600">Select a solution structured for your specific goals.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
                     <div>
                         <h3 class="text-xl font-bold mb-2">Standard Copywriting</h3>
@@ -88,8 +261,7 @@
                     </div>
                     <a href="https://lava.top/products/ca022a16-63db-4e78-98e6-e9105b4b1a47" target="_blank" class="w-full py-3 text-center bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition block">Order Now</a>
                 </div>
-
-                <div class="bg-white p-8 rounded-2xl border-2 border-blue-600 shadow-md flex flex-col justify-between relative bg-white">
+                <div class="bg-white p-8 rounded-2xl border-2 border-blue-600 shadow-md flex flex-col justify-between relative">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Most Popular</div>
                     <div>
                         <h3 class="text-xl font-bold mb-2">Premium Translation</h3>
@@ -103,7 +275,6 @@
                     </div>
                     <a href="https://lava.top/products/8e022b31-50e1-45af-867f-d5225b394741" target="_blank" class="w-full py-3 text-center bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 shadow-md transition block">Order Now</a>
                 </div>
-
                 <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
                     <div>
                         <h3 class="text-xl font-bold mb-2">Full-Project Solution</h3>
@@ -117,7 +288,6 @@
                     </div>
                     <a href="https://lava.top/products/93025bb6-5631-4023-b99f-7f23383507f2" target="_blank" class="w-full py-3 text-center bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition block">Order Now</a>
                 </div>
-
             </div>
         </div>
     </section>
@@ -132,74 +302,210 @@
         </div>
     </section>
 
-    <section class="py-12 bg-gray-900 text-gray-100 px-4 border-t border-gray-800">
-        <div class="max-w-3xl mx-auto">
-            
-            <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold tracking-wide">Order Fulfillment Logs</h2>
-                <p class="text-xs text-gray-400 mt-1">Verified Gateway Communications & Client Deliveries</p>
-            </div>
-
-            <div class="bg-gray-950 border border-gray-800 rounded-xl p-4 md:p-6 font-mono text-xs md:text-sm leading-relaxed space-y-8 text-gray-300">
-                
-                <div class="space-y-3">
-                    <div class="border-b border-gray-800 pb-2 text-gray-400">
-                        <div>[INVOICE ID: 93025bb6-5631-4023-b99f-7f23383507f2]</div>
-                        <div>[CLIENT: rebec0830@gmail.com | DATE: 27-MAY-2026]</div>
-                        <div>[PRODUCT: Premium Full-Project Solution (Bilingual: EN/IT)]</div>
-                    </div>
-                    <div class="space-y-2">
-                        <p><span class="text-purple-400">rebec0830@gmail.com (09:12 am):</span> Hello! I just processed the payment for the Premium Full-Project Solution via Lava.top. My active voucher code is K4N1H8P5G3. Please verify it on your side so we can proceed.</p>
-                        <p><span class="text-blue-400">argvlianinatura@gmail.com (09:28 am):</span> Hi Rebecca! Yes, I see your order inside the Lava system, it is successfully cleared and active. Welcome! Please share the project files or materials you need translation and localization for.</p>
-                        <p><span class="text-purple-400">rebec0830@gmail.com (10:05 am):</span> Perfect! I have attached our application strings file below (app_strings_en.json — 2,100 words). Since it's a creative app, it is crucial that the Italian translation keeps an engaging, youthful, and friendly tone rather than a dry literal translation.</p>
-                        <p class="text-gray-500 text-[11px] pl-4">&gt;&gt; File Attached: app_strings_en.json (Status: Uploaded)</p>
-                        <p><span class="text-blue-400">argvlianinatura@gmail.com (10:45 am):</span> Got the file! The word count is well within the package limits. I completely understand your requirement about the style; I will ensure the Italian localization sounds natural, modern, and perfectly captures that vibrant tone for your users. I'm starting on it now.</p>
-                        <p><span class="text-blue-400">argvlianinatura@gmail.com (06:15 pm):</span> Hi Rebecca, the complete localization is ready! I have meticulously translated and adapted all keys in the structure while preserving your variables. Here is the fully localized production ready file.</p>
-                        <p class="text-gray-500 text-[11px] pl-4">&gt;&gt; File Delivered: app_strings_it.json (Status: Completed)</p>
-                        <p><span class="text-purple-400">rebec0830@gmail.com (06:40 pm):</span> Wow, that was fast! My Italian colleague just reviewed the strings and she says the phrasing is absolutely brilliant and sounds incredibly native. Thank you so much for the exceptional work! I am going to release the payment on Lava right away.</p>
-                    </div>
-                </div>
-
-                <div class="border-t border-gray-800 my-4"></div>
-
-                <div class="space-y-3">
-                    <div class="border-b border-gray-800 pb-2 text-gray-400">
-                        <div>[INVOICE ID: a705b2d4-4672-4df3-ae9e-85e9b5807c58]</div>
-                        <div>[CLIENT: vmartino64@outlook.com | DATE: 27-MAY-2026]</div>
-                        <div>[PRODUCT: Premium Full-Project Solution (Bilingual: EN/IT)]</div>
-                    </div>
-                    <div class="space-y-2">
-                        <p><span class="text-emerald-400">vmartino64@outlook.com (04:30 pm):</span> Greetings, I am writing to confirm a purchase made under voucher K4N1H8P5G3 for your bilingual project service. I have a marketing pitch presentation deck that requires precise English to Italian translation for an upcoming investment rounds meeting.</p>
-                        <p><span class="text-blue-400">argvlianinatura@gmail.com (04:55 pm):</span> Hello Vittorio, thank you! Yes, your voucher is validated and active. Please upload the file here, and let me know if there are any specific industrial or technical terms I should look out for.</p>
-                        <p><span class="text-emerald-400">vmartino64@outlook.com (05:15 pm):</span> Here is the presentation file (Investment_Pitch_EN.pptx — 1,800 words). It contains financial forecasts and scalability metrics, requiring high corporate-level accuracy. Do you think we can finalize this by tomorrow morning?</p>
-                        <p class="text-gray-500 text-[11px] pl-4">&gt;&gt; File Attached: Investment_Pitch_EN.pptx (Status: Uploaded)</p>
-                        <p><span class="text-blue-400">argvlianinatura@gmail.com (05:40 pm):</span> Received perfectly. I have extensive experience in business and financial translations, so the metrics and corporate tone will be polished to a high standard. I will prioritize this and deliver the translated slides by tomorrow morning.</p>
-                        <p><span class="text-blue-400">argvlianinatura@gmail.com (09:30 am - May 28):</span> Good morning Vittorio! Your localized presentation is fully ready. I've maintained the original layout formatting intact while adapting the content into fluent, high-level corporate Italian.</p>
-                        <p class="text-gray-500 text-[11px] pl-4">&gt;&gt; File Delivered: Investment_Pitch_IT.pptx (Status: Completed)</p>
-                        <p><span class="text-emerald-400">vmartino64@outlook.com (10:12 am - May 28):</span> This is immaculate work, Natela. You preserved the corporate financial vocabulary perfectly without shifting any structural text boxes. This will serve us exceptionally well for our presentation. Service fully delivered and verified!</p>
-                    </div>
-                </div>
-
-                <div class="border-t border-gray-800 my-4"></div>
-
-                <div class="space-y-3">
-                    <div class="border-b border-gray-800 pb-2 text-gray-400">
-                        <div>[INVOICE ID: 5649116f-aa63-4af8-9518-9a5fff4cc157]</div>
-                        <div>[CLIENT: amal3le@zohomail.com | DATE: 27-MAY-2026]</div>
-                        <div>[PRODUCT: Premium Full-Project Solution (Bilingual: EN/IT)]</div>
-                    </div>
-                    <div class="space-y-2">
-                        <p><span class="text-blue-500">amal3le@zohomail.com (01:10 pm):</span> Hello, I have successfully processed the payment for the Premium Full-Project Solution on Lava.top. Voucher code: K4N1H8P5G3. Along with it, I am attaching the project specification manual that we need translated from English into Italian.</p>
-                        <p><span class="text-blue-400">argvlianinatura@gmail.com (01:35 pm):</span> Hi Kiran! I have verified your Lava voucher code and confirmed your order. I downloaded the manual; it looks like a highly technical document. Let me carefully analyze the glossary terms used here to align them with professional Italian technical syntax.</p>
-                        <p><span class="text-blue-500">amal3le@zohomail.com (02:02 pm):</span> Excellent. Yes, it has some industry-specific guidelines. Please let me know if you run into any ambiguous phrases, I'll be online to assist.</p>
-                        <p><span class="text-blue-400">argvlianinatura@gmail.com (07:45 pm):</span> Hi Kiran, the complete technical translation of your project manual has been completed and double-checked for architectural accuracy. Attached is the final document.</p>
-                        <p class="text-gray-500 text-[11px] pl-4">&gt;&gt; File Delivered: Project_Manual_v2_IT.pdf (Status: Completed)</p>
-                        <p><span class="text-blue-500">amal3le@zohomail.com (08:20 pm):</span> This setup is outstanding, thanks for the amazing work! I have thoroughly verified the layout and wording. I am signing the Service Acceptance Document via WeSigned right now to conclude our order perfectly.</p>
-                    </div>
-                </div>
-
-            </div>
+    <section class="nl-section" id="logs" aria-label="Order Fulfillment Logs">
+      <div class="nl-inner">
+        <div class="nl-heading">
+          <div class="nl-dot" aria-hidden="true"></div>
+          <div>
+            <p class="nl-heading-title"><em>natura</em> / order-fulfillment-log — 3 completed</p>
+            <p class="nl-heading-sub">Verified Gateway Communications &amp; Client Deliveries</p>
+          </div>
         </div>
+
+        <article class="nl-card">
+          <div class="nl-card-bar">
+            <span class="nl-bar-id">#93025bb6 · rebec0830@gmail.com</span>
+            <span class="nl-bar-prod">Premium Full-Project Solution (EN/IT)</span>
+            <span class="nl-bar-ok">● COMPLETED</span>
+          </div>
+          <div class="nl-card-body">
+            <div class="nl-meta">
+              <div class="nl-meta-pair"><span class="nl-meta-k">client</span><span class="nl-meta-v">Rebecca</span></div>
+              <div class="nl-meta-pair"><span class="nl-meta-k">date</span><span class="nl-meta-v">2026-05-27</span></div>
+              <div class="nl-meta-pair"><span class="nl-meta-k">delivery</span><span class="nl-meta-v">app_strings_en.json → app_strings_it.json</span></div>
+              <div class="nl-meta-pair"><span class="nl-meta-k">words</span><span class="nl-meta-v">~2,100</span></div>
+            </div>
+            <div class="nl-thread">
+              <div class="nl-msg">
+                <span class="nl-time">09:12</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-c">rebec0830@gmail.com</p>
+                  <p class="nl-text">Hello! I just processed the payment for the Premium Full-Project Solution via Lava.top. My active voucher code is K4N1H8P5G3. Please verify it on your side so we can proceed.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">09:28</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-n">argvlianinatura@gmail.com</p>
+                  <p class="nl-text">Hi Rebecca! Yes, I see your order inside the Lava system, it is successfully cleared and active. Welcome! Please share the project files or materials you need translation and localization for.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">10:05</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-c">rebec0830@gmail.com</p>
+                  <p class="nl-text">Perfect! I have attached our application strings file below (app_strings_en.json — 2,100 words). Since it's a creative app, it is crucial that the Italian translation keeps an engaging, youthful, and friendly tone rather than a dry literal translation.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">10:45</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-n">argvlianinatura@gmail.com</p>
+                  <p class="nl-text">Got the file! The word count is well within the package limits. I completely understand your requirement about the style; I will ensure the Italian localization sounds natural, modern, and perfectly captures that vibrant tone for your users. I'm starting on it now.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">18:15</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-n">argvlianinatura@gmail.com</p>
+                  <p class="nl-text">Hi Rebecca, the complete localization is ready! I have meticulously translated and adapted all keys in the structure while preserving your variables. Here is the fully localized production-ready file.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time"></span>
+                <p class="nl-sys">⬆ File Delivered: app_strings_it.json — Status: Completed</p>
+              </div>
+              <div class="nl-msg nl-hi">
+                <span class="nl-time">18:40</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-c">rebec0830@gmail.com</p>
+                  <p class="nl-text">Wow, that was fast! My Italian colleague just reviewed the strings and she says the phrasing is absolutely brilliant and sounds incredibly native. Thank you so much for the exceptional work! I am going to release the payment on Lava right away.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="nl-card">
+          <div class="nl-card-bar">
+            <span class="nl-bar-id">#a705b2d4 · vmartino64@outlook.com</span>
+            <span class="nl-bar-prod">Premium Full-Project Solution (EN/IT)</span>
+            <span class="nl-bar-ok">● COMPLETED</span>
+          </div>
+          <div class="nl-card-body">
+            <div class="nl-meta">
+              <div class="nl-meta-pair"><span class="nl-meta-k">client</span><span class="nl-meta-v">Vittorio</span></div>
+              <div class="nl-meta-pair"><span class="nl-meta-k">date</span><span class="nl-meta-v">2026-05-27 / 28</span></div>
+              <div class="nl-meta-pair"><span class="nl-meta-k">delivery</span><span class="nl-meta-v">Investment_Pitch_EN.pptx → Investment_Pitch_IT.pptx</span></div>
+              <div class="nl-meta-pair"><span class="nl-meta-k">words</span><span class="nl-meta-v">~1,800</span></div>
+            </div>
+            <div class="nl-thread">
+              <div class="nl-msg">
+                <span class="nl-time">16:30</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-c">vmartino64@outlook.com</p>
+                  <p class="nl-text">Greetings, I am writing to confirm a purchase made under voucher K4N1H8P5G3 for your bilingual project service. I have a marketing pitch presentation deck that requires precise English to Italian translation for an upcoming investment rounds meeting.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">16:55</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-n">argvlianinatura@gmail.com</p>
+                  <p class="nl-text">Hello Vittorio, thank you! Yes, your voucher is validated and active. Please upload the file here, and let me know if there are any specific industrial or technical terms I should look out for.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">17:15</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-c">vmartino64@outlook.com</p>
+                  <p class="nl-text">Here is the presentation file (Investment_Pitch_EN.pptx — 1,800 words). It contains financial forecasts and scalability metrics, requiring high corporate-level accuracy. Do you think we can finalize this by tomorrow morning?</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">17:40</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-n">argvlianinatura@gmail.com</p>
+                  <p class="nl-text">Received perfectly. I have extensive experience in business and financial translations, so the metrics and corporate tone will be polished to a high standard. I will prioritize this and deliver the translated slides by tomorrow morning.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">09:30 · May 28</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-n">argvlianinatura@gmail.com</p>
+                  <p class="nl-text">Good morning Vittorio! Your localized presentation is fully ready. I've maintained the original layout formatting intact while adapting the content into fluent, high-level corporate Italian.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time"></span>
+                <p class="nl-sys">⬆ File Delivered: Investment_Pitch_IT.pptx — Status: Completed</p>
+              </div>
+              <div class="nl-msg nl-hi">
+                <span class="nl-time">10:12 · May 28</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-c">vmartino64@outlook.com</p>
+                  <p class="nl-text">This is immaculate work, Natela. You preserved the corporate financial vocabulary perfectly without shifting any structural text boxes. This will serve us exceptionally well for our presentation. Service fully delivered and verified!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="nl-card">
+          <div class="nl-card-bar">
+            <span class="nl-bar-id">#5649116f · amal3le@zohomail.com</span>
+            <span class="nl-bar-prod">Premium Full-Project Solution (EN/IT)</span>
+            <span class="nl-bar-ok">● COMPLETED</span>
+          </div>
+          <div class="nl-card-body">
+            <div class="nl-meta">
+              <div class="nl-meta-pair"><span class="nl-meta-k">client</span><span class="nl-meta-v">Kiran Nagi</span></div>
+              <div class="nl-meta-pair"><span class="nl-meta-k">date</span><span class="nl-meta-v">2026-05-27</span></div>
+              <div class="nl-meta-pair"><span class="nl-meta-k">delivery</span><span class="nl-meta-v">Project_Manual_EN → Project_Manual_v2_IT.pdf</span></div>
+            </div>
+            <div class="nl-thread">
+              <div class="nl-msg">
+                <span class="nl-time">13:10</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-c">amal3le@zohomail.com</p>
+                  <p class="nl-text">Hello, I have successfully processed the payment for the Premium Full-Project Solution on Lava.top. Voucher code: K4N1H8P5G3. Along with it, I am attaching the project specification manual that we need translated from English into Italian.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">13:35</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-n">argvlianinatura@gmail.com</p>
+                  <p class="nl-text">Hi Kiran! I have verified your Lava voucher code and confirmed your order. I downloaded the manual; it looks like a highly technical document. Let me carefully analyze the glossary terms used here to align them with professional Italian technical syntax.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">14:02</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-c">amal3le@zohomail.com</p>
+                  <p class="nl-text">Excellent. Yes, it has some industry-specific guidelines. Please let me know if you run into any ambiguous phrases, I'll be online to assist.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time">19:45</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-n">argvlianinatura@gmail.com</p>
+                  <p class="nl-text">Hi Kiran, the complete technical translation of your project manual has been completed and double-checked for architectural accuracy. Attached is the final document.</p>
+                </div>
+              </div>
+              <div class="nl-msg">
+                <span class="nl-time"></span>
+                <p class="nl-sys">⬆ File Delivered: Project_Manual_v2_IT.pdf — Status: Completed</p>
+              </div>
+              <div class="nl-msg nl-hi">
+                <span class="nl-time">20:20</span>
+                <div class="nl-body">
+                  <p class="nl-sender nl-sender-c">amal3le@zohomail.com</p>
+                  <p class="nl-text">This setup is outstanding, thanks for the amazing work! I have thoroughly verified the layout and wording. I am signing the Service Acceptance Document via WeSigned right now to conclude our order perfectly.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="nl-footer">
+          <p class="nl-brand"><em>natura</em> / completed-log</p>
+          <div class="nl-stats">
+            <div><span class="nl-stat-n">3</span><span class="nl-stat-l">Projects</span></div>
+            <div><span class="nl-stat-n">3 / 3</span><span class="nl-stat-l">Satisfied</span></div>
+            <div><span class="nl-stat-n">EN→IT</span><span class="nl-stat-l">Language Pair</span></div>
+          </div>
+        </div>
+
+      </div>
     </section>
 
 </body>
